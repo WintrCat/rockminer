@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+* {
+    font-family: "Poppins";
+}
+
+div {
+    display: inline-block;
+}
+
+div span {
+    transition-duration: 0.5s;
+}
+
+div:not(.no_expand) span:not(.no_expand):hover {
+    font-size: 17px;
+}
+
+p {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+/* ID CSS */
+
+#title {
+    font-size: 40px;
+    margin-left: 20px;
+    margin-top: 5px;
+}
+
+#rock {
+    margin-left: 10px;
+    transition-duration: 1s;
+}
+
+#rock:hover {
+    width: 260px;
+    height: 260px;
+}

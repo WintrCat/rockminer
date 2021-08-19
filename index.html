@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+        <title>MinerGame</title>
+
+        <link rel="stylesheet" href="styles.css"/>
+
+        <script src="script.js"></script>
+        <script src="tools.js"></script>
+    </head>
+
+    <body>
+
+        <div style="display: inline-block; position: absolute; left: 350px; margin-top: 5px; padding-left: 10px; height: 270px; overflow: auto; border: 3px solid black;" class="no_expand">
+            <b><span style="font-size: 30px;">Miners</span></b>
+            <br>
+            <u><span>Miner</span></u> <br>
+            <span>A basic miner that produces 0.8 rocks per second.</span> <br>
+
+            <u><span>Digger</span></u> <br>
+            <span>A digging machine that produces the rocks of 8 men!</span> <br>
+
+            <u><span>Quarry</span></u> <br>
+            <span>A mining team with machinery will produce you 64 rocks per second.</span> <br>
+
+            <u><span>Heavy Excavator</span></u> <br>
+            <span>A top of the line excavation machine producing 480 rocks per second. It's massive!</span> <br>
+
+            <u><span>Mining Probe</span></u> <br>
+            <span>An advanced self-replicating satellite that gradually increases your rocks per second.</span> <br>
+
+            <u><span>Dyson Rock</span></u> <br>
+            <span>Surround a star with this megastructure and turn the energy into minerals!</span> <br>
+
+            <br>
+
+        </div>
+
+        <div id="achievements" style="border: 3px solid black; width: 600px; height: 170px; overflow: auto; position: absolute; left: 350px; margin-top: 320px;">
+
+            <b><span style="position: relative; left: 235px; display: inline-block;" class="no_expand">Achievements</span></b> <br>
+
+        </div>
+
+        <h1 id="title">RockMiner</h1>
+        <img src="assets/rock.png" width=250 height=250 id="rock" onclick="increaseMoney()"/>
+
+        <br>
+        <b><span id="money" style="font-size: 25px;">Money: £0</span></b>
+        <br>
+        <b><span id="rps" style="font-size: 25px;">Rocks Per Sec: 0</span></b>
+        <br>
+        <b><span id="rpc" style="font-size: 25px;">Rocks Per Click: 0</span></b>
+
+        <!-- SHOP -->
+
+        <h2><u>Shop</u></h2>
+
+        <!-- MINERS -->
+
+        <table style="margin-top: -25px;">
+
+            <tr>
+                <th style="text-align: center;">Miners</th>
+                <th style="text-align: center;">Items</th>
+                <th style="text-align: center;">Upgrades</th>
+            </tr>
+
+            <tr>
+                <td>
+                    <div style="overflow: scroll; height: 370px; width: 400px; border: 3px solid black;">
+
+                        <div onclick="buy('Miner')">
+            
+                            <span style="background-color: dodgerblue;" id="miner">Miner - £10</span>
+                            <span style="color: crimson;" id="count_miner" class="no_expand">x0</span>
+            
+                        </div>
+                        <br>
+            
+                        <div onclick="buy('Digger')">
+            
+                            <span style="background-color: dodgerblue;" id="digger">Digger - £150</span>
+                            <span style="color: crimson;" id="count_digger" class="no_expand">x0</span>
+            
+                        </div>
+                        <br>
+            
+                        <div onclick="buy('Quarry')">
+            
+                            <span style="background-color: dodgerblue;" id="quarry">Quarry - £1,000</span>
+                            <span style="color: crimson;" id="count_quarry" class="no_expand">x0</span>
+            
+                        </div>
+                        <br>
+            
+                        <div onclick="buy('Heavy Excavator')">
+            
+                            <span style="background-color: dodgerblue;" id="heavyexcavator">Heavy Excavator - £15,000</span>
+                            <span style="color: crimson;" id="count_heavyexcavator" class="no_expand">x0</span>
+            
+                        </div>
+                        <br>
+            
+                        <div onclick="buy('Mining Probe')">
+            
+                            <span style="background-color: dodgerblue;" id="miningprobe">Mining Probe - £250,000</span>
+                            <span style="color: crimson;" id="count_miningprobe" class="no_expand">x0</span>
+            
+                        </div>
+                        <br>
+
+                        <div onclick="buy('Dyson Rock')">
+            
+                            <span style="background-color: dodgerblue;" id="dysonrock">Dyson Rock - £3,500,000</span>
+                            <span style="color: crimson;" id="count_dysonrock" class="no_expand">x0</span>
+            
+                        </div>
+                        <br>
+            
+                    </div>
+                </td>
+
+                <td>
+
+                    <div style="overflow: scroll; height: 370px; width: 400px; border: 3px solid black;">
+
+                        <div id="div_pickaxe" onclick="buy('Pickaxe')" onmouseenter="description('show', 'Pickaxe')" onmouseleave="description('hide', 'Pickaxe')">
+                    
+                            <span style="background-color: dodgerblue;" id="pickaxe">Pickaxe - £200</span>
+                        
+                        </div>
+                        <br>
+                
+                        <div id="div_drill" onclick="buy('Drill')" onmouseenter="description('show', 'Drill')" onmouseleave="description('hide', 'Drill')">
+                        
+                            <span style="background-color: dodgerblue;" id="drill">Drill - £1,500</span>
+                        
+                        </div>
+                        <br>
+                
+                        <div id="div_explosivedrill" onclick="buy('Explosive Drill')" onmouseenter="description('show', 'Explosive Drill')" onmouseleave="description('hide', 'Explosive Drill')">
+                        
+                            <span style="background-color: dodgerblue;" id="explosivedrill">Explosive Drill - £4,000</span>
+                        
+                        </div>
+                        <br>
+                
+                        <div id="div_miningbeam" onclick="buy('Mining Beam')" onmouseenter="description('show', 'Mining Beam')" onmouseleave="description('hide', 'Mining Beam')">
+                        
+                            <span style="background-color: dodgerblue;" id="miningbeam">Mining Beam - £35,000</span>
+                        
+                        </div>
+                        <br>
+                
+                        <div id="div_atomcollector" onclick="buy('Atom Collector')" onmouseenter="description('show', 'Atom Collector')" onmouseleave="description('hide', 'Atom Collector')">
+                        
+                            <span style="background-color: dodgerblue;" id="atomcollector">Atom Collector - £400,000</span>
+                        
+                        </div>
+                        <br>
+                
+                        <div id="div_infernolaser" onclick="buy('Inferno Laser')" onmouseenter="description('show', 'Inferno Laser')" onmouseleave="description('hide', 'Inferno Laser')">
+                        
+                            <span style="background-color: dodgerblue;" id="infernolaser">Inferno Laser - £3,000,000</span>
+                        
+                        </div>
+                        <br>
+
+                        <div id="div_terraineditor" onclick="buy('Terrain Editor')" onmouseenter="description('show', 'Terrain Editor')" onmouseleave="description('hide', 'Terrain Editor')">
+                        
+                            <span style="background-color: dodgerblue;" id="terraineditor">Terrain Editor - £20,000,000</span>
+                        
+                        </div>
+                        <br>
+            
+                    </div>
+
+                </td>
+
+                <td>
+
+                    <div style="overflow: scroll; height: 370px; width: 400px; border: 3px solid black;">
+
+                        <div id="div_furiousclicks" onclick="buy('Furious Clicks')" onmouseenter="description('show', 'Furious Clicks')" onmouseleave="description('hide', 'Furious Clicks')">
+                    
+                            <span style="background-color: dodgerblue;" id="furiousclicks">Furious Clicks - £10,000</span>
+                        
+                        </div>
+                        <br>
+
+                        <div id="div_highprofilemining" onclick="buy('High Profile Mining')" onmouseenter="description('show', 'High Profile Mining')" onmouseleave="description('hide', 'High Profile Mining')">
+                    
+                            <span style="background-color: dodgerblue;" id="highprofilemining">High Profile Mining - £650,000</span>
+                        
+                        </div>
+                        <br>
+
+                        <div id="div_fusionreacting" onclick="buy('Fusion Reacting')" onmouseenter="description('show', 'Fusion Reacting')" onmouseleave="description('hide', 'Fusion Reacting')">
+                    
+                            <span style="background-color: dodgerblue;" id="fusionreacting">Fusion Reacting - £4,500,000</span>
+                        
+                        </div>
+                        <br>
+
+                        <div id="div_diamondduplication" onclick="buy('Diamond Duplication')" onmouseenter="description('show', 'Diamond Duplication')" onmouseleave="description('hide', 'Diamond Duplication')">
+                    
+                            <span style="background-color: dodgerblue;" id="diamondduplication">Diamond Duplication - £36,000,000</span>
+                        
+                        </div>
+                        <br>
+            
+                    </div>
+
+                </td>
+
+            </tr>
+
+        </table>
+
+    </body>
+
+</html>
