@@ -49,6 +49,7 @@ function increaseMoney() {
         prices.quarry = Math.max(1, prices.quarry * multiplier);
         prices.heavyexcavator = Math.max(1, prices.heavyexcavator * multiplier);
         prices.miningprobe = Math.max(1, prices.miningprobe * multiplier);
+        prices.dysonrock = Math.max(1, prices.dysonrock * multiplier);
     }
     if (hasFusionReacting) {
         rocksPerSec *= 1.0002;
@@ -190,6 +191,14 @@ function buy(type) {
             document.getElementById("terraineditor").style.backgroundColor = "#bababa";
             document.getElementById("div_terraineditor").appendChild(purchasedText);
         }
+    } else if (type == "Universe Simulator") {
+        if (money >= 360000000 && clickValue < 560000) {
+            money -= 360000000;
+            clickValue = 560000;
+
+            document.getElementById("universesimulator").style.backgroundColor = "#bababa";
+            document.getElementById("div_universesimulator").appendChild(purchasedText);
+        }
 
     // UPGRADES
     } else if (type == "Furious Clicks") {
@@ -217,12 +226,20 @@ function buy(type) {
             document.getElementById("div_fusionreacting").appendChild(purchasedText);
         }
     } else if (type == "Diamond Duplication") {
-        if (money >= 36000000) {
-            money -= 36000000;
+        if (money >= 70000000) {
+            money -= 70000000;
             rocksPerClickMultiplier *= 2;
 
             document.getElementById("diamondduplication").style.backgroundColor = "#bababa";
             document.getElementById("div_diamondduplication").appendChild(purchasedText);
+        }
+    } else if (type == "Resource Mitosis") {
+        if (money >= 320000000) {
+            money -= 320000000;
+            rocksPerSec *= 7;
+
+            document.getElementById("resourcemitosis").style.backgroundColor = "#bababa";
+            document.getElementById("div_resourcemitosis").appendChild(purchasedText);
         }
     }
 
@@ -295,6 +312,15 @@ function description(visibility, item) {
         } else {
             document.getElementById("item_desc").remove();
         }
+    } else if (item == "Universe Simulator") {
+        if (visibility == "show") {
+            let desc = document.createElement("p");
+            desc.innerText = "Simulates entire universes and extracts all resources. You stole this from the aliens.";
+            desc.id = "item_desc";
+            document.getElementById("div_universesimulator").appendChild(desc);
+        } else {
+            document.getElementById("item_desc").remove();
+        }
     } else if (item == "Furious Clicks") {
         if (visibility == "show") {
             let desc = document.createElement("p");
@@ -328,6 +354,15 @@ function description(visibility, item) {
             desc.innerText = "Rocks per click is doubled AGAIN.";
             desc.id = "item_desc";
             document.getElementById("div_diamondduplication").appendChild(desc);
+        } else {
+            document.getElementById("item_desc").remove();
+        }
+    } else if (item == "Resource Mitosis") {
+        if (visibility == "show") {
+            let desc = document.createElement("p");
+            desc.innerText = "Rocks per second is multiplied by SEVEN.";
+            desc.id = "item_desc";
+            document.getElementById("div_resourcemitosis").appendChild(desc);
         } else {
             document.getElementById("item_desc").remove();
         }
