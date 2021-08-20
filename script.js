@@ -241,6 +241,14 @@ function buy(type) {
             document.getElementById("resourcemitosis").style.backgroundColor = "#bababa";
             document.getElementById("div_resourcemitosis").appendChild(purchasedText);
         }
+    } else if (type == "JavaScript Console") {
+        if (money >= 8000000000) {
+            money -= 8000000000;
+            rocksPerClickMultiplier *= 60;
+
+            document.getElementById("javascriptconsole").style.backgroundColor = "#bababa";
+            document.getElementById("div_javascriptconsole").appendChild(purchasedText);
+        }
     }
 
 
@@ -363,6 +371,15 @@ function description(visibility, item) {
             desc.innerText = "Rocks per second is multiplied by SEVEN.";
             desc.id = "item_desc";
             document.getElementById("div_resourcemitosis").appendChild(desc);
+        } else {
+            document.getElementById("item_desc").remove();
+        }
+    } else if (item == "JavaScript Console") {
+        if (visibility == "show") {
+            let desc = document.createElement("p");
+            desc.innerText = "Rocks per click is multiplied by SIXTY.";
+            desc.id = "item_desc";
+            document.getElementById("div_javascriptconsole").appendChild(desc);
         } else {
             document.getElementById("item_desc").remove();
         }
